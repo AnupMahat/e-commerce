@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import { persistStore } from 'redux-persist'
+
 import logger from 'redux-logger'
 import rootReducre from './root-reducre'
 
@@ -13,3 +15,7 @@ export const store = createStore(
   rootReducre,
   composeEnhancers(applyMiddleware(...middlewares))
 )
+
+export const persistor = persistStore(store)
+
+export default { store, persistor }
