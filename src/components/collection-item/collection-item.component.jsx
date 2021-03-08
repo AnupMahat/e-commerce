@@ -1,27 +1,26 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import './collection-item.styles.scss'
+import {CollectionItemContainer,ImageContainer,ButtonContainer,CollectionFooterContainer,NameContiner,PriceContainer} from './collection-item.styles'
 
-import CustomButton from '../custom-button/custom-button.component'
+
 import {addItem} from '../../redux/cart/cart.actions'
 
 const CollectionItem =({item,addItem})=>{
     const {name,price,imageUrl}=item
     return(
-        <div className='collection-item'>
-        <div 
-        className='image'
+        <CollectionItemContainer>
+        <ImageContainer
         style={{
             backgroundImage:`url(${imageUrl})`
         }}
         />
-        <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
-        </div>
-        <CustomButton inverted onClick={()=>addItem(item)}>ADD to cart</CustomButton>
-    </div>
+        <CollectionFooterContainer>
+        <NameContiner>{name}</NameContiner>
+        <PriceContainer>{price}</PriceContainer>
+        </CollectionFooterContainer>
+        <ButtonContainer inverted onClick={()=>addItem(item)}>ADD to cart</ButtonContainer>
+    </CollectionItemContainer>
     )
     
 }
